@@ -1,0 +1,9 @@
+# /_data/authors.yml
+
+Ranjit Singh:
+  name: "Ranjit Singh"
+  uri: "http://codehealthy.com"
+  email: "ranjitsaini@codehealthy.com"
+  bio: "An enthusiastic Software developer by day and blogger by night"
+  avatar: "/assets/images/admin.jpg"
+  twitter: "king99immortal"

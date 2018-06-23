@@ -1,0 +1,14 @@
+{% assign category_link = '<a href="/categories/">Categories</a>' %}
+{% assign year_link = '<a href="/year-archive/">Years</a>' %}
+{% assign tag_link = '<a href="/tags/">Tags</a>' %}
+
+{% assign view_post_text = 'View posts by' %}
+
+{% if include.type == "year" %}
+{{ view_post_text }} {{ category_link }} or {{ tag_link }}
+{% elsif include.type == "category" %}
+{{ view_post_text }} {{ year_link }} or {{ tag_link }}
+{% elsif include.type == "tag" %}
+{{ view_post_text }} {{ year_link }} or {{ category_link }}
+{% endif %}
+<hr />

@@ -1,0 +1,16 @@
+---
+layout: archive
+author_profile: false
+entries_layout: grid
+classes: wide
+---
+{% assign sorted = site.podcastepisodes | sort: 'date' | reverse %}
+{% for post in sorted %}
+{% if post.podcast == page.podcast %}
+{% include archive-single.html %}
+
+{% endif %}
+{% endfor %}
+<hr>
+<a href="/podcasts/">Back to All podcasts</a>
+

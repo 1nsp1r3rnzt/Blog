@@ -1,0 +1,22 @@
+{% for category in post.categories limit:1 %}
+ {% assign newcat =category| downcase strip  %}
+   {% endfor %}
+
+   {% if post.header.teaser %}
+  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% else %}
+
+ {% for sitecategory in site.category_default_thumbnail %}
+  {% assign strippedcategory = sitecategory[0] | downcase strip  %}
+     {% if newcat == strippedcategory %}
+        {% assign teaser = sitecategory[1] %}
+        
+        {% break %}
+      {% else %}
+        {% assign teaser = site.teaser %}
+
+      {% endif %}
+
+  {% endfor %}
+
+{% endif %}

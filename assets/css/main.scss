@@ -1,0 +1,147 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+
+body{
+  color: #222;
+}
+
+.toc__menu {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  font-size: 0.8rem;
+
+  a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: red;
+    font-size: $type-size-7;
+    font-weight: bold;
+    line-height: 1.5;
+    border-bottom: 1px solid $border-color;
+
+    &:hover {
+      color: #000;
+      background: $lighter-gray;
+    }
+  }
+
+  > li:last-child {
+    a {
+      border-bottom: none;
+    }
+  }
+
+  li ul > li a {
+    padding-left: 1rem;
+    font-weight: normal;
+  }
+
+  li > ul {
+    padding-left: 1rem;
+  }
+
+  /* hide sub sub links on small screens*/
+  li > ul li {
+    display: none;
+
+    @include breakpoint($medium) {
+      display: block;
+    }
+  }
+}
+
+.home_imag_container {
+position:relative;
+
+}
+
+.home_imag_crop {
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    min-height: 240px;
+    width: 100%;
+
+}
+.home_title_container{
+/* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(0, 0, 0) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(0, 0, 0, 0.6);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+border-radius:4px
+;position:absolute;
+width:100%;
+color:white;
+bottom:0;
+}
+
+.home_title_container h2 {
+margin: 0.50em;
+}
+
+.homepage__meta{
+margin:0;
+}
+
+.masthead
+{
+background-color: #000000;
+border-bottom: 1px solid #CC484A;
+}
+  
+
+.greedy-nav {
+background-color: #000000;
+}
+.masthead__inner-wrap{
+padding:0
+}
+
+.greedy-nav a
+{
+color: #E0E0E0;
+
+}
+
+.archive__item-title a{
+text-decoration:none;
+}
+
+.archive__item-title a:hover {
+  color: #CC484A ;
+}
+
+.sidebar .sidebar_extra_image {
+  @include breakpoint(max-width $large) {
+    width: 35%;
+    float: left;
+    padding: 10px;
+    
+  }
+}
+
+.sidebar .sidebar_extra_h3 h3:first-of-type {
+  @include breakpoint(max-width $large) {
+   padding-top:20px; 
+  }
+}
+
+
+.list__item .page__meta, .list__item .comment__date {
+  margin: 0 0 4px;
+ font-size: 0.6em;
+}
+

@@ -1,0 +1,16 @@
+---
+layout: archive
+---
+
+{% if page.show_content == "after" %}
+
+{% else %}
+{{ content }}
+{% endif %}
+
+<div class="entries-{{ page.entries_layout }}">
+  {% include documents-collection.html collection=page.collection sort_by=page.sort_by sort_order=page.sort_order type=page.entries_layout show_content =page.show_content %}
+{% if page.show_content == "after" %}
+{{ content }}
+{% endif %}
+</div>

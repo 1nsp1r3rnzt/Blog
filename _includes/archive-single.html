@@ -1,0 +1,65 @@
+{% for categorys in post.categories limit:1 %}
+ {% assign newcat =categorys| downcase strip  %}
+   {% endfor %}
+
+   {% if post.header.teaser %}
+  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% else %}
+ {% for sitecategory in site.category_default_thumbnail %}
+  {% assign strippedcategory = sitecategory[0] | downcase strip  %}
+     {% if newcat == strippedcategory %}
+        {% assign teaser = sitecategory[1] %}   
+        {% break %}
+      {% else %}
+        {% assign teaser = site.teaser %}
+      {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+{% if include.show_podcast_title=="true" and post.podcast
+ %}
+{% assign post_podcast = post.podcast | replace: "-", " " |capitalize_all %}
+{% assign post_title = post.title %}
+
+{% assign title = post_podcast | append: ' : ' | append: post_title %}
+{% endif %}
+
+<div class="{{ include.type | default: "list" }}__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    {% if include.type == "grid" and teaser %}
+      <div class="archive__item-teaser">
+        <a href="{{post.url| relative_url}}">
+        <img src=
+          {% if teaser contains "://" %}
+            "{{ teaser }}"
+          {% else %}
+            "{{ teaser | relative_url }}"
+          {% endif %}
+          alt="thumbnail">
+        </a>
+      </div>
+    {% endif %}
+
+      <h2 class="archive__item-title" itemprop="headline">
+      {% if post.link %}
+        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+      {% else %}
+        <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
+      {% endif %}
+      
+    </h2>
+    {% if post.read_time %}
+
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
+    {% endif %}
+    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
+{% endif %}
+
+  </article>
+</div>
