@@ -1,4 +1,3 @@
-
 # Codehealthy blog
 
 This is the source code for my personal blog at [codehealthy.com](http://codehealthy.com) built on jekyll using minimal-mistake theme.
@@ -28,4 +27,5 @@ Script to automate deployment on linux can be [downloaded here.](https://codehea
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
 
